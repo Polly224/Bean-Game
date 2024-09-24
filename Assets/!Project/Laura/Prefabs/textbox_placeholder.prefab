@@ -99,8 +99,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textMeshPro: {fileID: 6332050174380679307}
-  textToSet: Big boner down the lane.
+  textToSet: []
   scrollSpeed: 0.05
+  textId: 
 --- !u!1 &5970159995974745674
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,8 +228,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 6
-  m_fontSizeBase: 6
+  m_fontSize: 5
+  m_fontSizeBase: 5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
