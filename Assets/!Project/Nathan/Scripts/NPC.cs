@@ -10,6 +10,15 @@ public class NPC : MonoBehaviour
     public virtual void PromptDialogue()
     {
         TextScroll.instance.gameObject.SetActive(true);
-        TextScroll.instance.DisplayText(textId);
+        
+
+        if (Player.instance.beansCollected)
+        {
+            TextScroll.instance.DisplayText(textId + "beans");
+        }
+        else
+        {
+            TextScroll.instance.DisplayText(textId);
+        }
     }
 }

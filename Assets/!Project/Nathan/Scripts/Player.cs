@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    
+    public bool beansCollected = false;
+    public bool beansSpotted = false;
     [SerializeField] float movementspeed;
     [SerializeField] Rigidbody2D rb2d;
     private Vector2 moveInput;
     public List<GameObject> nearbyNPCs = new();
+    public static Player instance;
+
+    private void Start()
+    {
+        if (instance != null) Destroy(this);
+        else instance = this;
+    }
     void Update()
     {
         if (!TextScroll.instance.gameObject.activeSelf)
@@ -29,6 +37,11 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("NPC"))
         {
             nearbyNPCs.Add(collision.gameObject);
+        }
+
+        if (collision.gameObject.CompareTag("Beans"))
+        {
+            beansSpotted = true;
         }
     }
 
@@ -51,6 +64,11 @@ public class Player : MonoBehaviour
                 highestDistanceIndex = i;
             }
             nearbyNPCs[highestDistanceIndex].GetComponent<NPC>().PromptDialogue();
+        }
+
+        if (Input.GetKeyDown(KeyCode.E) && beansSpotted)
+        {
+            beansCollected = true;
         }
     }
 }
