@@ -16,6 +16,12 @@ public class TextScroll : MonoBehaviour
     public string textId;
     private bool canContinue = false;
     private bool canPressSpace = true;
+    public static TextScroll instance;
+    private void Awake()
+    {
+        if (instance != null) Destroy(gameObject);
+        else instance = this;
+    }
 
     private void Update()
     {
