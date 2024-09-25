@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public bool beansSpotted = false;
     [SerializeField] float movementspeed;
     [SerializeField] Rigidbody2D rb2d;
+    [SerializeField] GameObject canvas;
     private Vector2 moveInput;
     public List<GameObject> nearbyNPCs = new();
     public static Player instance;
@@ -37,12 +38,25 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("NPC"))
         {
             nearbyNPCs.Add(collision.gameObject);
+            if (!TextScroll.instance.gameObject.activeSelf)
+            {
+                canvas.SetActive(true);
+            }
+            else
+            {
+                canvas.SetActive(false);
+            }
         }
 
         if (collision.gameObject.CompareTag("Beans"))
         {
             beansSpotted = true;
+            if (!TextScroll.instance.gameObject.activeSelf)
+            {
+                canvas.SetActive(true);
+            }
         }
+        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -50,6 +64,12 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("NPC"))
         {
             nearbyNPCs.Remove(collision.gameObject);
+            canvas.SetActive(false);
+        }
+        if (collision.gameObject.CompareTag("Beans"))
+        {
+            beansSpotted = false;
+            canvas.SetActive(false);
         }
     }
     private void InteractingWithNPC()
@@ -64,6 +84,11 @@ public class Player : MonoBehaviour
                 highestDistanceIndex = i;
             }
             nearbyNPCs[highestDistanceIndex].GetComponent<NPC>().PromptDialogue();
+            if (beansCollected)
+            {
+                beansCollected = false;
+            }
+            rb2d.velocity = Vector2.zero;
         }
 
         if (Input.GetKeyDown(KeyCode.E) && beansSpotted)
