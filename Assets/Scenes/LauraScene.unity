@@ -341,7 +341,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &5992025169180623590
+--- !u!1001 &669664786
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -349,9 +349,85 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6455044125786244159, guid: 22987ef62694b61429f4d54ceb29932f, type: 3}
+      propertyPath: m_Name
+      value: DialogueStorage
+      objectReference: {fileID: 0}
+    - target: {fileID: 8346201985749889073, guid: 22987ef62694b61429f4d54ceb29932f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.32678676
+      objectReference: {fileID: 0}
+    - target: {fileID: 8346201985749889073, guid: 22987ef62694b61429f4d54ceb29932f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.636726
+      objectReference: {fileID: 0}
+    - target: {fileID: 8346201985749889073, guid: 22987ef62694b61429f4d54ceb29932f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.025475485
+      objectReference: {fileID: 0}
+    - target: {fileID: 8346201985749889073, guid: 22987ef62694b61429f4d54ceb29932f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8346201985749889073, guid: 22987ef62694b61429f4d54ceb29932f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8346201985749889073, guid: 22987ef62694b61429f4d54ceb29932f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8346201985749889073, guid: 22987ef62694b61429f4d54ceb29932f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8346201985749889073, guid: 22987ef62694b61429f4d54ceb29932f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8346201985749889073, guid: 22987ef62694b61429f4d54ceb29932f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8346201985749889073, guid: 22987ef62694b61429f4d54ceb29932f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 22987ef62694b61429f4d54ceb29932f, type: 3}
+--- !u!114 &913985191 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 942372631010230658, guid: 9fa8743fba0c8584c94550334a2e9e3b, type: 3}
+  m_PrefabInstance: {fileID: 1339769535}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &1339769535
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 337411974198012663, guid: 9fa8743fba0c8584c94550334a2e9e3b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 4391011752021787110, guid: 9fa8743fba0c8584c94550334a2e9e3b, type: 3}
       propertyPath: m_Name
       value: textbox_placeholder
+      objectReference: {fileID: 0}
+    - target: {fileID: 5970159995974745674, guid: 9fa8743fba0c8584c94550334a2e9e3b, type: 3}
+      propertyPath: m_Name
+      value: ConversationText
       objectReference: {fileID: 0}
     - target: {fileID: 8034840010047775311, guid: 9fa8743fba0c8584c94550334a2e9e3b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -359,7 +435,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8034840010047775311, guid: 9fa8743fba0c8584c94550334a2e9e3b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.4
+      value: -2.8
       objectReference: {fileID: 0}
     - target: {fileID: 8034840010047775311, guid: 9fa8743fba0c8584c94550334a2e9e3b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -394,18 +470,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8285587701928995351, guid: 9fa8743fba0c8584c94550334a2e9e3b, type: 3}
-      propertyPath: textToSet
-      value: Well... here's your text box. Complete with punctuation pauses and everything.
+      propertyPath: textId
+      value: test1
       objectReference: {fileID: 0}
     - target: {fileID: 8285587701928995351, guid: 9fa8743fba0c8584c94550334a2e9e3b, type: 3}
-      propertyPath: scrollSpeed
-      value: 0.05
-      objectReference: {fileID: 0}
+      propertyPath: nameText
+      value: 
+      objectReference: {fileID: 913985191}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5970159995974745674, guid: 9fa8743fba0c8584c94550334a2e9e3b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 8013886885332150056, guid: 9fa8743fba0c8584c94550334a2e9e3b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 9fa8743fba0c8584c94550334a2e9e3b, type: 3}
@@ -415,4 +494,5 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 619394802}
-  - {fileID: 5992025169180623590}
+  - {fileID: 1339769535}
+  - {fileID: 669664786}
