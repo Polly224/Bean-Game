@@ -21,6 +21,7 @@ public class TextScroll : MonoBehaviour
     {
         if (instance != null) Destroy(gameObject);
         else instance = this;
+        gameObject.SetActive(false);
     }
 
     private void Update()

@@ -87,13 +87,21 @@ public class DialogueStorage : MonoBehaviour
             case "longspeech":
                 return new Conversation("Wise Old Man", new string[] { "Oh... It’s you.", "I’m… honestly surprised you even managed to find me.", "Not many people visit this alley anymore, you know.", "I must say, you’re the first visitor I’ve had in many years. How fascinating.", "There is… one thing, that I wish to tell you about.", "You see, there’s been something plaguing me for many years now. Something I haven’t been able to talk about to anyone.", "Now that YOU’RE here, though… I suppose I should… ‘spill the beans’, so to speak.", "Not that you really have a say in this. I explicitly told them not to put ‘yes’ or ‘no’ options in my conversation.", "…Anyway. Allow me to tell you a story.", "You see, I used to have this dear friend of mine… his name was Ellivro.", "He always wore a very fancy sombrero, it was his signature hat.", "One day, he leaned over while we were feeding the ducks, you see.", "I said to him, y’know, I leaned over to him, and I said…", "’Ellivro. You gotta stop feeding the ducks, man. I-It’s… it’s not good for 'em. The bread, I mean. They can’t really, like, digest it.’", "…He just stared at me for a while, seemingly unresponsive.", "’…Please wake up.’, he replied.", "…", "Why… why did he say that?" });
             case "longspeechbeans":
-                return new Conversation("Wise Old Man", new string[] {"Nice.", "...", "[You're both glad you"});
+                return new Conversation("Wise Old Man", new string[] {"Nice.", "...", "[You're both glad you didn't have to sit through another speech, but also a bit disappointed.]", "[At least he seems to be enjoying his meal.]"});
+            case "cigarettepile":
+                return new Conversation("Cigarette Pile", new string[] { "[Five... hundred... \n ...Wait, no, this is 499 cigarettes, not 500. You might want to order some more.]"});
+            case "cigarettepilebeans":
+                return new Conversation("Cigarette Pile", new string[] { "[You pour the beans onto the pile.]", "[Congratulations, you've wasted some perfectly good beans, and cured some random guy's nicotine addiction.]"});
+            case "garcello":
+                return new Conversation("Green-haired Smoker", new string[] {"[There's a man here, smoking a cigarette.]", "Oh, hey, little guy. Didn't see ya there.", "...You want a smoke? I've got plenty piled up here."});
+            case "garcellobeans":
+                return new Conversation("Green-haired Smoker", new string[] { "Oh, hey, little guy. What's that you're holding?", "[You hand over the can of beans.]", "AGRHAAGARAGJ" });
             case "beansobtained":
-                return new Conversation("Narration", new string[] { "[You've obtained the last can of beans!]", "[You can either go home and eat it yourself, or give it to whoever you want.]" });
+                return new Conversation("Narration", new string[] { "[You've obtained the last can of beans!]", "[You can either go home and eat it yourself, or give it to whoever you want.]", "[Mind you, this means that the next thing you talk to will be given the beans. So choose wisely.]", "[In your hands is the last can of beans.]"});
             case "beansgiven":
                 return new Conversation("Narration", new string[] {"[You've given away the last can of beans in existence.]", "...", "Go home, your task is done." });
             case "playerbeans":
-                return new Conversation("Narration", new string[] { "[You sit down to eat your delicious can of beans" });
+                return new Conversation("Narration", new string[] { "[You sit down to eat your delicious can of beans]", "[You tear off the lid with your bare hands, chugging it backwards like it's a glass of beer.]", "...!", "[You don't... feel so good...]", "..."});
             default:
                 return new Conversation("error", new string[] { "Whoops, there's no dialogue here.", "Might want to make sure you're not inputting the wrong id."});
     }

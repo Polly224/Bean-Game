@@ -2,24 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Interaction
+public class Player : MonoBehaviour
 {
     
     [SerializeField] float movementspeed;
     [SerializeField] Rigidbody2D rb2d;
     private Vector2 moveInput;
-    public bool NPCnearby = false;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    public List<GameObject> nearbyNPCs = new();
     void Update()
     {
-        if (TextboxActive != true)
+        if (!TextScroll.instance.gameObject.activeSelf)
         {
             moveInput.x = Input.GetAxisRaw("Horizontal");
             moveInput.y = Input.GetAxisRaw("Vertical");
@@ -36,8 +28,7 @@ public class Player : Interaction
     {
         if (collision.gameObject.CompareTag("NPC"))
         {
-            Debug.Log("NPC nearby, Press E to interact");
-            NPCnearby = true;
+            nearbyNPCs.Add(collision.gameObject);
         }
     }
 
@@ -45,15 +36,21 @@ public class Player : Interaction
     {
         if (collision.gameObject.CompareTag("NPC"))
         {
-            Debug.Log("NPC nearby, Press E to interact");
-            NPCnearby = false;
+            nearbyNPCs.Remove(collision.gameObject);
         }
     }
     private void InteractingWithNPC()
     {
-        if (Input.GetKey(KeyCode.E) && NPCnearby == true)
+        if (Input.GetKeyDown(KeyCode.E) && nearbyNPCs.Count > 0 && !TextScroll.instance.gameObject.activeSelf)
         {
-            SetTextboxActive();
+            float highestDistance = 0;
+            int highestDistanceIndex = 0;
+            for (int i = 0; i < nearbyNPCs.Count; i++)
+            {
+                if (Vector2.Distance(transform.position, nearbyNPCs[i].transform.position) > highestDistance) highestDistance = Vector2.Distance(transform.position, nearbyNPCs[i].transform.position);
+                highestDistanceIndex = i;
+            }
+            nearbyNPCs[highestDistanceIndex].GetComponent<NPC>().PromptDialogue();
         }
     }
 }
