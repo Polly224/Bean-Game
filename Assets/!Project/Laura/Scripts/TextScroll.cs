@@ -2,36 +2,69 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.RenderGraphModule;
 
 public class TextScroll : MonoBehaviour
 {
     public TextMeshPro textMeshPro;
+    public TextMeshPro nameText;
     private string originalText;
-    public string textToSet;
+    public DialogueStorage.Conversation textToSet;
     public float scrollSpeed = 0.01f;
-    private void OnEnable()
+    public string textId;
+    private bool canContinue = false;
+    private bool canPressSpace = true;
+
+    private void Update()
     {
-        originalText ??= textToSet;
+        // When space is pressed, the dialogue progresses.
+        if (Input.GetButtonDown("Continue") && canPressSpace) 
+        { 
+            canPressSpace = false;
+            canContinue = true;
+        }
+        if (Input.GetButtonUp("Continue")) 
+        { 
+            canPressSpace = true;
+        }
+    }
+
+    public void DisplayText(string textId)
+    {
+        // Gets the corresponding piece of dialogue from the given text id, and feeds it into the textbox.
+        textToSet = DialogueStorage.instance.GetDialogue(textId);
         StartCoroutine(ScrollCoroutine());
     }
     IEnumerator ScrollCoroutine()
     {
-        textMeshPro.text = "";
-        textToSet = originalText;
-        while (textMeshPro.text.Length < originalText.Length)
+        nameText.text = textToSet.name;
+        for (int i = 0; i < textToSet.conversation.Length; i++)
         {
-            textMeshPro.text += textToSet[0];
+            originalText = textToSet.conversation[i];
+            textMeshPro.text = "";
+            textToSet.conversation[i] = originalText;
+            yield return null;
+            while (textMeshPro.text.Length < originalText.Length)
+            {
+                textMeshPro.text += textToSet.conversation[i][0];
 
-            if (textToSet[0] == char.Parse(".") || textToSet[0] == char.Parse("?") || textToSet[0] == char.Parse("!"))
-                yield return new WaitForSeconds(scrollSpeed * 2);
+                if (textToSet.conversation[i][0] == char.Parse(".") || textToSet.conversation[i][0] == char.Parse("?") || textToSet.conversation[i][0] == char.Parse("!"))
+                    yield return new WaitForSeconds(scrollSpeed * 2);
 
-            if (textToSet[0] == char.Parse(","))
+                if (textToSet.conversation[i][0] == char.Parse(","))
+                    yield return new WaitForSeconds(scrollSpeed);
+
+                textToSet.conversation[i] = textToSet.conversation[i][1..];
                 yield return new WaitForSeconds(scrollSpeed);
-
-            textToSet = textToSet[1..];
-            yield return new WaitForSeconds(scrollSpeed);
+                if (canContinue) textMeshPro.text += textToSet.conversation[i];
+                canContinue = false;
+            }
+            yield return new WaitForEndOfFrame();
+            yield return new WaitUntil(() => canContinue);
+            canContinue = false;
         }
+        gameObject.SetActive(false);
     }
 }
