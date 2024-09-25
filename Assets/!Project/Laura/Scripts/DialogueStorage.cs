@@ -123,7 +123,7 @@ public class DialogueStorage : MonoBehaviour
             case "purpleorkbeans":
                 return new Conversation("Purple Ork...?", new string[] { "[There seems to be a purple ork, sitting in the corner- oh.]", "[Just as you gave him the beans, he suddenly disappeared, taking the beans with him.]", "[...You wonder. How would purple beans taste?]" });
             case "purpleorkaltbeans":
-                return new Conversation("", new string[] { "[You put the beans down in front of the corner of nothingness.]", "...", "[Suddenly, the beans turn purple, disappearing. This saddens you. Everyone knows purple things are unfindable.]" });
+                return new Conversation("", new string[] { "[You put the beans down in front of the corner of nothingness.]", "...", "[Suddenly, the beans turn purple, disappearing. This saddens you. Everyone knows purple things are unfindable.]"});
             case "springtrap":
                 return new Conversation("Decrepit Suit", new string[] {"[There's an animatronic suit of a bunny, very rugged and old.]", "[You're sure the owner will come back to pick it up, though. He always comes back.]"});
             case "springtrapbeans":
