@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Interaction
 {
-    [SerializeField] GameObject textbox;
+    
     [SerializeField] float movementspeed;
     [SerializeField] Rigidbody2D rb2d;
     private Vector2 moveInput;
     public bool NPCnearby = false;
-    private bool TextboxActive = false;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
 
             rb2d.velocity = moveInput * movementspeed;
         }
-       
+
         InteractingWithNPC();
     }
 
@@ -53,8 +53,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.E) && NPCnearby == true)
         {
-            textbox.SetActive(true);
-            TextboxActive = true;
+            SetTextboxActive();
         }
     }
 }
