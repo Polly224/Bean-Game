@@ -93,7 +93,7 @@ public class DialogueStorage : MonoBehaviour
             case "beansgiven":
                 return new Conversation("Narration", new string[] {"[You've given away the last can of beans in existence.]", "...", "Go home, your task is done." });
             case "playerbeans":
-                return new Conversation("Narration", new string[] {"[You sit down to eat your delicious can of beans"})
+                return new Conversation("Narration", new string[] { "[You sit down to eat your delicious can of beans" });
             default:
                 return new Conversation("error", new string[] { "Whoops, there's no dialogue here.", "Might want to make sure you're not inputting the wrong id."});
     }
