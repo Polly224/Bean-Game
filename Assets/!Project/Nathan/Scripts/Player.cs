@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public bool beansCollected = false;
+    public static bool beansCollected = false;
     public bool beansSpotted = false;
     [SerializeField] float movementspeed;
     [SerializeField] Rigidbody2D rb2d;

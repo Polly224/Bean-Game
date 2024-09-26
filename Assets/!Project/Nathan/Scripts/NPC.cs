@@ -12,10 +12,10 @@ public class NPC : MonoBehaviour
         TextScroll.instance.gameObject.SetActive(true);
         
 
-        if (Player.instance.beansCollected)
+        if (Player.beansCollected)
         {
             TextScroll.instance.DisplayText(textId + "beans");
-            Player.instance.beansCollected = false;
+            Player.beansCollected = false;
             PlayerPrefs.SetInt("BeansGone", 1);
         }
         else

@@ -43,13 +43,13 @@ public class DialogueStorage : MonoBehaviour
         switch (dialogue)
         {
             case "introdialogue":
-                return new Conversation("Narration", new string[] {"[Ah, what a beautiful day...]", "[You're spending your day the same way you spend most.]", "[You're standing in the corner of the room, due to you lacking a sitting sprite.]", "...", "[You know, you do feel a bit hungry. Specifically, for an entire can of beans.]", "[...Good lord, you could absolutely devour some beans right now.]", "[There's only one can of beans left at the store. Go and get it.]", "[...And be a kind neighbor. There's lots of people willing to have a chat!]"});
+                return new Conversation("Narration", new string[] {"[Ah, what a beautiful day...]", "[You're spending your day the same way you spend most.]", "[You're standing in the middle of the room, due to you lacking a sitting sprite.]", "...", "[You know, you do feel a bit hungry. Specifically, for an entire can of beans.]", "[...Good lord, you could absolutely devour some beans right now.]", "[There's only one can of beans left at the store. Go and get it.]", "[...And be a kind neighbor. There's lots of people willing to have a chat!]"});
             case "introdialoguealt":
-                return new Conversation("Narration", new string[] { "[Ah, what a beautiful day...]", "[You're spending your day the same way you spend most.]", "[You're standing in the corner of the room, due to you lacking a sitting sprite.]", "...", "[Well... sadly, there are no more cans of beans in existence.]", "[That one in the store was the last one, after all.]", "[You have no reason to leave your house anymore.]", "..." });
+                return new Conversation("Narration", new string[] { "[Ah, what a beautiful day...]", "[You're spending your day the same way you spend most.]", "[You're standing in the middle of the room, due to you lacking a sitting sprite.]", "...", "[Well... sadly, there are no more cans of beans in existence.]", "[That one in the store was the last one, after all.]", "[You have no reason to leave your house anymore.]", "..." });
             case "introdialoguedead":
-                return new Conversation("Narration", new string[] { "[Ah, what a beautiful day...]", "[You're...]", "[...........]", "[...Right. You died. What a shame.]", "[Perhaps if you hadn't been oh-so-selfish... if you'd shared your beans with others.]", "[Perhaps you wouldn't have suffered this same fate.]", "[For now, though...]", "[Good night.]"});
+                return new Conversation("Narration", new string[] { "[Ah, what a beautiful day...]", "[You're...]", "[...........]", "[...Right. You died. What a shame.]", "[Who would have expected you to have a... fatal bean allergy.]", "[Perhaps if you hadn't been oh-so-selfish... if you'd shared your beans with others.]", "[Perhaps you wouldn't have suffered this same fate.]", "[For now, though...]", "[Good night.]"});
             case "stepoutside":
-                return new Conversation("Narration", new string[] {"[...Oh, right. The world hates you.]", "...", "[...Well, you can't afford an umbrella, so too bad.]", "[Have fun getting drenched in rainwater.]"});
+                return new Conversation("Narration", new string[] {"[...Oh, right. The world hates you.]", "...", "[...Well, you can't afford an umbrella, so too bad.]", "[Have fun getting drenched in rainwater on the way there.]"});
             case "cardboardbox":
                 return new Conversation("Cardboard Box", new string[] { "[It's just a cardboard box.]", "[Considering the housing prices of nowadays, you had to settle for this.]", "[...You should get those beans first, before you go back inside.]" });
             case "isaac":
@@ -149,7 +149,7 @@ public class DialogueStorage : MonoBehaviour
             case "beansgiven":
                 return new Conversation("Narration", new string[] {"[You've given away the last can of beans in existence.]", "...", "[Go home, your task is done.]" });
             case "playerbeans":
-                return new Conversation("Narration", new string[] { "[You sit down to eat your delicious can of beans]", "[You tear off the lid with your bare hands, chugging it backwards like it's a glass of beer.]", "...!", "[You don't... feel so good...]", "..."});
+                return new Conversation("Narration", new string[] { "[You walk into the middle of the room to eat your delicious can of beans.]", "[You tear off the lid with your bare hands, chugging it backwards like it's a glass of beer.]", "...!", "[You don't... feel so good...]", "..."});
             case "playernobeans":
                 return new Conversation("Narration", new string[] { "[You enter your home, beans given away, hunger unsatiated.]", "[However... you feel like you did the right thing.]", "[Rather than being egotistical, keeping such a treasure for yourself... you shared it with a stranger.]", "[How nice of you. You did very well.]", "[Thank you. You fulfilled your role wonderfully.]", "[You can rest now. Good night... Sans Undertale.]" });
             default:
