@@ -4,18 +4,11 @@ using UnityEngine;
 
 public class Beans : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void CollectBeans()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Player.instance.beansCollected)
-        {
-            Destroy(gameObject);
-        }
+        Player.instance.beansCollected = true;
+        Player.instance.closestInteractable = null;
+        Player.instance.nearbyNPCs.Clear();
+        Destroy(gameObject);
     }
 }

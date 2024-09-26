@@ -41,7 +41,7 @@ public class DialogueStorage : MonoBehaviour
         switch (dialogue)
         {
             case "introdialogue":
-                return new Conversation("Narration", new string[] {"[Ah, what a beautiful day... you're feeling quite hungry. Specifically for a can of beans from the store.]", "[They only have 1 can of beans left, you know this. Good luck.]"});
+                return new Conversation("Narration", new string[] {"[Ah, what a beautiful day...]", "[You're spending your day the same way you spend most.]", "[You're standing in the corner of the room, lacking a sitting sprite.]", "...", "[You know, you do feel a bit hungry. Specifically, for an entire can of beans.]", "[...Good lord, you could devour some beans right now.]", "[There's only one can of beans left at the store. Go and get it.]"});
             case "stepoutside":
                 return new Conversation("Narration", new string[] {"[...Oh, right. The world hates you.]"});
             case "isaac":

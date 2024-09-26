@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -9,10 +11,12 @@ public class Player : MonoBehaviour
     [SerializeField] float movementspeed;
     [SerializeField] Rigidbody2D rb2d;
     [SerializeField] GameObject canvas;
+    public GameObject closestInteractable;
     private Vector2 moveInput;
     public List<GameObject> nearbyNPCs = new();
     public static Player instance;
     Animator animator;
+    public bool canMove = true;
 
     private void Start()
     {
@@ -22,7 +26,7 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        if (!TextScroll.instance.gameObject.activeSelf)
+        if (!TextScroll.instance.gameObject.activeSelf && canMove) 
         {
             moveInput.x = Input.GetAxisRaw("Horizontal");
             moveInput.y = Input.GetAxisRaw("Vertical");
@@ -40,6 +44,18 @@ public class Player : MonoBehaviour
             animator.SetBool("idle", true);
         }
 
+        float highestDistance = 0;
+        int highestDistanceIndex = 0;
+        for (int i = 0; i < nearbyNPCs.Count; i++)
+        {
+            if (Vector2.Distance(transform.position, nearbyNPCs[i].transform.position) > highestDistance) highestDistance = Vector2.Distance(transform.position, nearbyNPCs[i].transform.position);
+            highestDistanceIndex = i;
+        }
+        if (nearbyNPCs.Count != 0) closestInteractable = nearbyNPCs[highestDistanceIndex];
+        else closestInteractable = null;
+        if (!TextScroll.instance.gameObject.activeSelf && !canvas.activeSelf && closestInteractable != null) canvas.SetActive(true);
+        else if (TextScroll.instance.gameObject.activeSelf && canvas.activeSelf) canvas.SetActive(false);
+        if(closestInteractable != null) canvas.transform.position = closestInteractable.transform.position + Vector3.up * 2;
         InteractingWithNPC();
     }
 
@@ -48,23 +64,11 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("NPC"))
         {
             nearbyNPCs.Add(collision.gameObject);
-            if (!TextScroll.instance.gameObject.activeSelf)
-            {
-                canvas.SetActive(true);
-            }
-            else
-            {
-                canvas.SetActive(false);
-            }
         }
 
         if (collision.gameObject.CompareTag("Beans"))
         {
-            beansSpotted = true;
-            if (!TextScroll.instance.gameObject.activeSelf)
-            {
-                canvas.SetActive(true);
-            }
+            nearbyNPCs.Add(collision.gameObject);
         }
         
     }
@@ -74,7 +78,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("NPC"))
         {
             nearbyNPCs.Remove(collision.gameObject);
-            canvas.SetActive(false);
+            if(nearbyNPCs.Count == 0) canvas.SetActive(false);
         }
         if (collision.gameObject.CompareTag("Beans"))
         {
@@ -86,24 +90,9 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && nearbyNPCs.Count > 0 && !TextScroll.instance.gameObject.activeSelf)
         {
-            float highestDistance = 0;
-            int highestDistanceIndex = 0;
-            for (int i = 0; i < nearbyNPCs.Count; i++)
-            {
-                if (Vector2.Distance(transform.position, nearbyNPCs[i].transform.position) > highestDistance) highestDistance = Vector2.Distance(transform.position, nearbyNPCs[i].transform.position);
-                highestDistanceIndex = i;
-            }
-            nearbyNPCs[highestDistanceIndex].GetComponent<NPC>().PromptDialogue();
-            if (beansCollected)
-            {
-                beansCollected = false;
-            }
+            if (closestInteractable.CompareTag("NPC")) closestInteractable.GetComponent<NPC>().PromptDialogue();
+            else if (closestInteractable.CompareTag("Beans")) closestInteractable.GetComponent<Beans>().CollectBeans();
             rb2d.velocity = Vector2.zero;
-        }
-
-        if (Input.GetKeyDown(KeyCode.E) && beansSpotted)
-        {
-            beansCollected = true;
-        }
+        } 
     }
 }

@@ -15,6 +15,7 @@ public class NPC : MonoBehaviour
         if (Player.instance.beansCollected)
         {
             TextScroll.instance.DisplayText(textId + "beans");
+            Player.instance.beansCollected = false;
         }
         else
         {
