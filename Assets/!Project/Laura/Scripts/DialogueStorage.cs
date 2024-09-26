@@ -41,9 +41,11 @@ public class DialogueStorage : MonoBehaviour
         switch (dialogue)
         {
             case "introdialogue":
-                return new Conversation("Narration", new string[] {"[Ah, what a beautiful day...]", "[You're spending your day the same way you spend most.]", "[You're standing in the corner of the room, lacking a sitting sprite.]", "...", "[You know, you do feel a bit hungry. Specifically, for an entire can of beans.]", "[...Good lord, you could devour some beans right now.]", "[There's only one can of beans left at the store. Go and get it.]"});
+                return new Conversation("Narration", new string[] {"[Ah, what a beautiful day...]", "[You're spending your day the same way you spend most.]", "[You're standing in the corner of the room, due to you lacking a sitting sprite.]", "...", "[You know, you do feel a bit hungry. Specifically, for an entire can of beans.]", "[...Good lord, you could absolutely devour some beans right now.]", "[There's only one can of beans left at the store. Go and get it.]", "[...And be a kind neighbor. There's lots of people willing to have a chat!]"});
             case "stepoutside":
-                return new Conversation("Narration", new string[] {"[...Oh, right. The world hates you.]"});
+                return new Conversation("Narration", new string[] {"[...Oh, right. The world hates you.]", "...", "[...Well, you can't afford an umbrella, so too bad.]"});
+            case "cardboardbox":
+                return new Conversation("Cardboard Box", new string[] { "[It's just a cardboard box.]", "[Considering the housing prices of nowadays, you had to settle for this.]" });
             case "isaac":
                 return new Conversation("Rogue Man", new string[] {"My wife just handed me the divorce papers... She's taking the kids, too.", "...At least my Isaac run's looking much better now!", "[The Man is now crying horizontally.]"});
             case "isaacbeans":
