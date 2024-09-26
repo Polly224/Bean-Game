@@ -12,11 +12,13 @@ public class Player : MonoBehaviour
     private Vector2 moveInput;
     public List<GameObject> nearbyNPCs = new();
     public static Player instance;
+    Animator animator;
 
     private void Start()
     {
         if (instance != null) Destroy(this);
         else instance = this;
+        animator = GetComponent<Animator>();
     }
     void Update()
     {
@@ -24,10 +26,18 @@ public class Player : MonoBehaviour
         {
             moveInput.x = Input.GetAxisRaw("Horizontal");
             moveInput.y = Input.GetAxisRaw("Vertical");
-
             moveInput.Normalize();
-
+            animator.SetBool("walkingright", Input.GetAxisRaw("Horizontal") > 0);
+            animator.SetBool("walkingleft", Input.GetAxisRaw("Horizontal") < 0);
+            animator.SetBool("walkingup", Input.GetAxisRaw("Vertical") > 0);
+            animator.SetBool("walkingdown", Input.GetAxisRaw("Vertical") < 0);
+            if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0) animator.SetBool("idle", true);
+            else animator.SetBool("idle", false);
             rb2d.velocity = moveInput * movementspeed;
+        }
+        else
+        {
+            animator.SetBool("idle", true);
         }
 
         InteractingWithNPC();
