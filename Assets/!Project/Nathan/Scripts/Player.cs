@@ -29,6 +29,10 @@ public class Player : MonoBehaviour
 
             rb2d.velocity = moveInput * movementspeed;
         }
+        if (TextScroll.instance.gameObject.activeSelf)
+        {
+            canvas.SetActive(false);
+        }
 
         InteractingWithNPC();
     }
@@ -42,10 +46,6 @@ public class Player : MonoBehaviour
             {
                 canvas.SetActive(true);
             }
-            else
-            {
-                canvas.SetActive(false);
-            }
         }
 
         if (collision.gameObject.CompareTag("Beans"))
@@ -56,6 +56,8 @@ public class Player : MonoBehaviour
                 canvas.SetActive(true);
             }
         }
+
+        
         
     }
 
