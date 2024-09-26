@@ -1,16 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
-public class NPC : MonoBehaviour
+public class RatScript : NPC
 {
-    [SerializeField] public string textId;
-    // Start is called before the first frame update
-    public virtual void PromptDialogue()
+   public override void  PromptDialogue()
     {
         TextScroll.instance.gameObject.SetActive(true);
-        
+
 
         if (Player.instance.beansCollected)
         {
@@ -21,5 +18,6 @@ public class NPC : MonoBehaviour
         {
             TextScroll.instance.DisplayText(textId);
         }
+        textId = "ratcoatalt";
     }
 }
