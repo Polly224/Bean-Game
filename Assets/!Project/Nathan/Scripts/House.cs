@@ -10,8 +10,10 @@ public class House : MonoBehaviour
     [SerializeField] Light2D spotLight;
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        StartCoroutine(Exit());
-        
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            StartCoroutine(Exit());
+        }
     }
 
     private IEnumerator Exit()

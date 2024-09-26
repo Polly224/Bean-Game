@@ -26,9 +26,10 @@ public class StartingSequence : MonoBehaviour
         };
         yield return new WaitForSeconds(2);
         TextScroll.instance.gameObject.SetActive(true);
-        TextScroll.instance.DisplayText("introdialogue");
+        if (PlayerPrefs.GetInt("BeansGone") == 0) TextScroll.instance.DisplayText("introdialogue");
+        else TextScroll.instance.DisplayText("introdialoguealt");
         yield return new WaitForSeconds(1);
-        bool whileStop = true;
+        bool whileStop = PlayerPrefs.GetInt("BeansGone") == 0;
         while (whileStop)
         {
             if (!TextScroll.instance.gameObject.activeSelf)
