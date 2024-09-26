@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.B)) PlayerPrefs.SetInt("BeansGone", 0);
         if (!TextScroll.instance.gameObject.activeSelf && canMove) 
         {
             moveInput.x = Input.GetAxisRaw("Horizontal");

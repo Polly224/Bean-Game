@@ -19,6 +19,7 @@ using UnityEditor.SceneManagement;
 public class DialogueStorage : MonoBehaviour
 {
     public static DialogueStorage instance;
+    public int cookieClickAmount = 1;
     public struct Conversation
     {
         public string name;
@@ -42,6 +43,8 @@ public class DialogueStorage : MonoBehaviour
         {
             case "introdialogue":
                 return new Conversation("Narration", new string[] {"[Ah, what a beautiful day...]", "[You're spending your day the same way you spend most.]", "[You're standing in the corner of the room, due to you lacking a sitting sprite.]", "...", "[You know, you do feel a bit hungry. Specifically, for an entire can of beans.]", "[...Good lord, you could absolutely devour some beans right now.]", "[There's only one can of beans left at the store. Go and get it.]", "[...And be a kind neighbor. There's lots of people willing to have a chat!]"});
+            case "introdialoguealt":
+                return new Conversation("Narration", new string[] { "[Ah, what a beautiful day...]", "[You're spending your day the same way you spend most.]", "[You're standing in the corner of the room, due to you lacking a sitting sprite.]", "...", "[Well... there are no more cans of beans in existence.]", "[That one in the store was the last one, after all.]", "[You have no reason to leave your house anymore.]", "..." });
             case "stepoutside":
                 return new Conversation("Narration", new string[] {"[...Oh, right. The world hates you.]", "...", "[...Well, you can't afford an umbrella, so too bad.]"});
             case "cardboardbox":
@@ -125,7 +128,7 @@ public class DialogueStorage : MonoBehaviour
             case "purpleorkbeans":
                 return new Conversation("Purple Ork...?", new string[] { "[There seems to be a purple ork, sitting in the corner- oh.]", "[Just as you gave him the beans, he suddenly disappeared, taking the beans with him.]", "[...You wonder. How would purple beans taste?]" });
             case "purpleorkaltbeans":
-                return new Conversation("", new string[] { "[You put the beans down in front of the corner of nothingness.]", "...", "[Suddenly, the beans turn purple, disappearing. This saddens you. Everyone knows purple things are unfindable.]"});
+                return new Conversation("", new string[] { "[You put the beans down in front of the corner of nothingness.]", "...", "[Suddenly, the beans turn purple, disappearing.]", "[This saddens you. Everyone knows purple things are unfindable, they're very sneaky.]"});
             case "springtrap":
                 return new Conversation("Decrepit Suit", new string[] {"[There's an animatronic suit of a bunny, very rugged and old.]", "[You're sure the owner will come back to pick it up, though. He always comes back.]"});
             case "springtrapbeans":

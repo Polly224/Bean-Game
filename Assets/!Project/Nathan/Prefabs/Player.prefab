@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7866785194480480051}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,6 +107,7 @@ MonoBehaviour:
   movementspeed: 7
   rb2d: {fileID: 7819472554156086241}
   canvas: {fileID: 7900785242252628148}
+  closestInteractable: {fileID: 0}
   nearbyNPCs: []
   canMove: 1
 --- !u!50 &7819472554156086241
