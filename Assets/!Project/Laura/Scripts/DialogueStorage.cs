@@ -130,10 +130,14 @@ public class DialogueStorage : MonoBehaviour
                 return new Conversation("Decrepit Suit", new string[] {"[There's an animatronic suit of a bunny, very rugged and old.]", "[You're sure the owner will come back to pick it up, though. He always comes back.]"});
             case "springtrapbeans":
                 return new Conversation("Decrepit Suit", new string[] {"[You put the can of beans in the suit's mouth.]", "[Surprisingly, the suit bites down, crushing the can and eating it fully.]", "[You suppose he didn't need to come back in the first place. He never left.]"});
+            case "pennywise":
+                return new Conversation("Balloon", new string[] { "[It's a floating red balloon. Its string seems to be tied around a sewer grate.]", "[There's a little note with writing and a drawing of a clown attached to the balloon.]", "\"We all float down here.\"", "...", "[This feels like a reference you don't get.]"});
+            case "pennywisebeans":
+                return new Conversation("Balloon", new string[] { "[You throw the can of beans down the sewer the balloon is attached to.]", "...", "[A moment of silence passes as the clanging of the can echoes down the sewers.]", "[Right as you're about to regret your decision, you hear a creepy laughter coming from inside.]", "[...You suppose someone appreciated your gift.]" });
             case "beansobtained":
                 return new Conversation("Narration", new string[] { "[You've obtained the last can of beans!]", "[You can either go home and eat it yourself, or give it to whoever you want.]", "[Mind you, this means that the next thing you talk to will be given the beans. So choose wisely.]", "[In your hands is the last can of beans.]"});
             case "beansgiven":
-                return new Conversation("Narration", new string[] {"[You've given away the last can of beans in existence.]", "...", "Go home, your task is done." });
+                return new Conversation("Narration", new string[] {"[You've given away the last can of beans in existence.]", "...", "[Go home, your task is done.]" });
             case "playerbeans":
                 return new Conversation("Narration", new string[] { "[You sit down to eat your delicious can of beans]", "[You tear off the lid with your bare hands, chugging it backwards like it's a glass of beer.]", "...!", "[You don't... feel so good...]", "..."});
             default:
