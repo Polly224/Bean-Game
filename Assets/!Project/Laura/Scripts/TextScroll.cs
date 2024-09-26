@@ -55,6 +55,7 @@ public class TextScroll : MonoBehaviour
             yield return null;
             while (textMeshPro.text.Length < originalText.Length)
             {
+                GetComponent<AudioSource>().Play();
                 textMeshPro.text += textToSet.conversation[i][0];
 
                 if (textToSet.conversation[i][0] == char.Parse(".") || textToSet.conversation[i][0] == char.Parse("?") || textToSet.conversation[i][0] == char.Parse("!"))
