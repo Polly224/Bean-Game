@@ -19,8 +19,9 @@ public class StartingSequence : MonoBehaviour
     {
         worldLight.intensity = 0;
         if (PlayerPrefs.GetInt("PlayerDied") == 1) StartCoroutine(CorpseSequence());
-        else if (!Player.beansCollected) StartCoroutine(StartSequence());
-        else StartCoroutine(DeathSequence());
+        else if (!Player.beansCollected && !Player.beansGiven) StartCoroutine(StartSequence());
+        else if (!Player.beansGiven) StartCoroutine(DeathSequence());
+        else StartCoroutine(GoodEnding());
         GameObject.Find("Player").GetComponent<Player>().canMove = false;
     }
 
@@ -120,6 +121,31 @@ public class StartingSequence : MonoBehaviour
                 while (worldLight.intensity > 0)
                 {
                     worldLight.intensity -= 0.03f * Time.deltaTime;
+                    yield return null;
+                }
+                Application.Quit();
+            }
+            yield return new WaitForFixedUpdate();
+        }
+    }
+    IEnumerator GoodEnding()
+    {
+        worldLight.intensity = 0;
+        outsideLight.intensity = 0.5f;
+        door.transform.position = new Vector3(3.5f, -4.96f, 0);
+        yield return new WaitForSeconds(2);
+        TextScroll.instance.gameObject.SetActive(true);
+        TextScroll.instance.DisplayText("playernobeans");
+        yield return new WaitForSeconds(1);
+        bool whileStop = true;
+        while (whileStop)
+        {
+            if (!TextScroll.instance.gameObject.activeSelf)
+            {
+                whileStop = false;
+                while (outsideLight.intensity > 0)
+                {
+                    outsideLight.intensity -= 0.1f * Time.deltaTime;
                     yield return null;
                 }
                 Application.Quit();

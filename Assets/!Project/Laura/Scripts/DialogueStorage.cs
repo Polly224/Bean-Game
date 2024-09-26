@@ -30,7 +30,7 @@ public class DialogueStorage : MonoBehaviour
             this.conversation = conversation;
         }
     }
-    public int cookieClickAmount;
+    public static int cookieClickAmount;
     
     void Awake()
     {
@@ -59,7 +59,7 @@ public class DialogueStorage : MonoBehaviour
             case "kris":
                 return new Conversation("Blue-skinned Kid", new string[] {"..."});
             case "krisbeans":
-                return new Conversation("Blue-skinned Kid", new string[] {"[You hand over the can of beans to the quiet blue kid.]", "...!", "[He seems happy.]"});
+                return new Conversation("Blue-skinned Kid", new string[] {"[You hand over the can of beans to the quiet blue kid.]", "...!", "[They seem happy.]"});
             case "susie":
                 return new Conversation("Purple Dragon", new string[] {"Where the FUCK are we?!"});
             case "susiebeans":

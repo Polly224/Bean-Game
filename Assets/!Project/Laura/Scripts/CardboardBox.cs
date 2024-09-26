@@ -7,7 +7,7 @@ public class CardboardBox : NPC
 {
     public override void PromptDialogue()
     {
-        if (Player.beansCollected)
+        if (Player.beansCollected || Player.beansGiven)
         {
             SceneManager.LoadScene("House");
         }

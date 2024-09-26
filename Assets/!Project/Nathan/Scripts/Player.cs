@@ -7,7 +7,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public static bool beansCollected = false;
-    public bool beansSpotted = false;
+    public static bool beansGiven = false;
     [SerializeField] float movementspeed;
     [SerializeField] Rigidbody2D rb2d;
     [SerializeField] GameObject canvas;
@@ -83,7 +83,6 @@ public class Player : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Beans"))
         {
-            beansSpotted = false;
             canvas.SetActive(false);
         }
     }
