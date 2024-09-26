@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RatScript : NPC
+public class CookieScript : NPC
 {
-   public override void  PromptDialogue()
+    public override void PromptDialogue()
     {
         TextScroll.instance.gameObject.SetActive(true);
-
 
         if (Player.instance.beansCollected)
         {
@@ -19,6 +18,6 @@ public class RatScript : NPC
         {
             TextScroll.instance.DisplayText(textId);
         }
-        textId = "ratcoatalt";
+        DialogueStorage.instance.cookieClickAmount++;
     }
 }

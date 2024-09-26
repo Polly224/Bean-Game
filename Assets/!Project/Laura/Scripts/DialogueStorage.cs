@@ -19,7 +19,6 @@ using UnityEditor.SceneManagement;
 public class DialogueStorage : MonoBehaviour
 {
     public static DialogueStorage instance;
-    public int cookieClickAmount = 1;
     public struct Conversation
     {
         public string name;
@@ -31,11 +30,13 @@ public class DialogueStorage : MonoBehaviour
             this.conversation = conversation;
         }
     }
+    public int cookieClickAmount;
     
     void Awake()
     {
         if (instance != null) Destroy(gameObject);
         else instance = this;
+        cookieClickAmount = 2;
     }
     public Conversation GetDialogue(string dialogue)
     {
@@ -44,11 +45,13 @@ public class DialogueStorage : MonoBehaviour
             case "introdialogue":
                 return new Conversation("Narration", new string[] {"[Ah, what a beautiful day...]", "[You're spending your day the same way you spend most.]", "[You're standing in the corner of the room, due to you lacking a sitting sprite.]", "...", "[You know, you do feel a bit hungry. Specifically, for an entire can of beans.]", "[...Good lord, you could absolutely devour some beans right now.]", "[There's only one can of beans left at the store. Go and get it.]", "[...And be a kind neighbor. There's lots of people willing to have a chat!]"});
             case "introdialoguealt":
-                return new Conversation("Narration", new string[] { "[Ah, what a beautiful day...]", "[You're spending your day the same way you spend most.]", "[You're standing in the corner of the room, due to you lacking a sitting sprite.]", "...", "[Well... there are no more cans of beans in existence.]", "[That one in the store was the last one, after all.]", "[You have no reason to leave your house anymore.]", "..." });
+                return new Conversation("Narration", new string[] { "[Ah, what a beautiful day...]", "[You're spending your day the same way you spend most.]", "[You're standing in the corner of the room, due to you lacking a sitting sprite.]", "...", "[Well... sadly, there are no more cans of beans in existence.]", "[That one in the store was the last one, after all.]", "[You have no reason to leave your house anymore.]", "..." });
+            case "introdialoguedead":
+                return new Conversation("Narration", new string[] { "[Ah, what a beautiful day...]", "[You're...]", "[...........]", "[...Right. You died. What a shame.]", "[Perhaps if you hadn't been oh-so-selfish... if you'd shared your beans with others.]", "[Perhaps you wouldn't have suffered this same fate.]", "[For now, though...]", "[Good night.]"});
             case "stepoutside":
-                return new Conversation("Narration", new string[] {"[...Oh, right. The world hates you.]", "...", "[...Well, you can't afford an umbrella, so too bad.]"});
+                return new Conversation("Narration", new string[] {"[...Oh, right. The world hates you.]", "...", "[...Well, you can't afford an umbrella, so too bad.]", "[Have fun getting drenched in rainwater.]"});
             case "cardboardbox":
-                return new Conversation("Cardboard Box", new string[] { "[It's just a cardboard box.]", "[Considering the housing prices of nowadays, you had to settle for this.]" });
+                return new Conversation("Cardboard Box", new string[] { "[It's just a cardboard box.]", "[Considering the housing prices of nowadays, you had to settle for this.]", "[...You should get those beans first, before you go back inside.]" });
             case "isaac":
                 return new Conversation("Rogue Man", new string[] {"My wife just handed me the divorce papers... She's taking the kids, too.", "...At least my Isaac run's looking much better now!", "[The Man is now crying horizontally.]"});
             case "isaacbeans":
@@ -64,7 +67,7 @@ public class DialogueStorage : MonoBehaviour
             case "goku":
                 return new Conversation("Strongest Fighter", new string[] { "Hey, it's me! The Strongest Fighter!", "Hey, you look pretty strong! I'd love to fight you sometime!", "Seems you're already busy on some kinda adventure, though. Let me know if you're up for a match!"});
             case "gokubeans":
-                return new Conversation("Strongest Fighter", new string[] {"[You pull out the beans, eagerly handing them to the Strongest Fighter.]", "Oh hey, you're giving me these? Thanks, guy!", "It's a shame I never got to fight you... at least I got a nice snack, though!"});
+                return new Conversation("Strongest Fighter", new string[] {"[You pull out the beans, eagerly handing them to The Strongest Fighter.]", "Oh hey, you're giving me these? Thanks, guy!", "It's a shame I never got to fight you... at least I got a nice snack, though!", "[Something tells you he's disappointed in the lack of healing the beans are giving him.]"});
             case "bug":
                 return new Conversation("Bug", new string[] { "...", "[There's a bug here.]", "[You can barely see it with your pixelated eyes, but trust me on this one.]"});
             case "bugbeans":
@@ -77,6 +80,10 @@ public class DialogueStorage : MonoBehaviour
                 return new Conversation("Sign", new string[] { "[It's an old, worn down sign. It seems like it's been here for a while.]", "[There's some poorly written text on it.", "\"Sorry to all C*seoh fans, we ran out of budget to expand the room further. We weren't able to fit him in.\"", "...", "[This room is bigger than your entire house.]" });
             case "caseohsignbeans":
                 return new Conversation("Sign", new string[] { "[You lay down the can of beans next to the sign.]", "[The sign turns to face it, absorbing the can into its face before the can instantly disappears.]", "...", "[The text on the sign changed.]", "\"Please stop feeding him. You're only making things worse.\"" });
+            case "cookie":
+                return new Conversation("Pile of Cookies", new string[] {"[There's " + cookieClickAmount.ToString() + " cookies laying on the ground here.]", "[You reach out and tap your finger on one of the cookies.]", "[...Surprisingly, another cookie pops out and gets added to the pile!]"});
+            case "cookiebeans":
+                return new Conversation("Pile of Cookies", new string[] {"[There's " + cookieClickAmount.ToString() + " cookies laying on the ground here.]", "[You reach out and pour the beans onto the pile.]", "[...Now it's " + cookieClickAmount.ToString() + " cookies and about 1735 beans.]", "[You've gained quite the collection, it seems.]"});
             case "ratcoat":
                 return new Conversation("???", new string[] { "[It's a bunch of rats in a trenchcoat, pretending to be a person.]", "...No we're not." });
             case "ratcoatalt":
@@ -104,11 +111,11 @@ public class DialogueStorage : MonoBehaviour
             case "cs:go":
                 return new Conversation("Guy Banging On Door", new string[] { "[There's a man on the other side of the door, wearing a balaclava.]", "DOOR STUCK!! DOOR STUCK!!!! PLEASE!!!", "[You don't have a jar of door unstucking with you.]" });
             case "cs:gobeans":
-                return new Conversation("Guy Banging On Door", new string[] {"[You give the beans to the balaclava-wearing man.]", "[The banging stops for a moment.]", "...", "[The banging continues again.]", "[That was a jar of beans, not a jar of door unstucking.]"});
+                return new Conversation("Guy Banging On Door", new string[] {"[You give the beans to the balaclava-wearing man.]", "[The banging stops for a moment.]", "...", "[The banging continues again.]", "[That was a can of beans, not a jar of door unstucking.]"});
             case "sona!polly":
-                return new Conversation("Tiny Sona", new string[] {"[There's a tiny girl here, wearing a purple hoodie.]", "H-hi!! Hi there!!", "[She reaches her tiny hand out for a high five. You tap it with your finger.]", "[She looks happy.]" });
+                return new Conversation("Tiny Sona", new string[] {"[There's a tiny girl here, wearing a purple hoodie.]", "H-hi!! Hi there!!", "[She reaches her tiny hand out for a high five. You tap it with your finger.]", "[She looks happy. Nice little interaction for the two of you.]" });
             case "sona!pollybeans":
-                return new Conversation("Tiny Sona", new string[] { "[You give the tiny girl a bean, and she quickly devours it.]", "[She scatters away, muttering something about cooking. Seems like she didn't like it much.]" });
+                return new Conversation("Tiny Sona", new string[] { "[You give the tiny girl a bean, and she quickly devours it.]", "[She scatters away, muttering something about cooking. Seems like she didn't like it much.]", "[Maybe bring a can of strawberries, next time?]" });
             case "v1":
                 return new Conversation("Bloodthirsty Robot", new string[] { "[There's a winged robot here, holding a gun in one hand and a can of coins in the other.]", "[Seems like the robot's begging for money has resulted in quite a lot of coins in its can. It makes a beeping noise as you walk past.]" });
             case "v1beans":
@@ -143,6 +150,8 @@ public class DialogueStorage : MonoBehaviour
                 return new Conversation("Narration", new string[] {"[You've given away the last can of beans in existence.]", "...", "[Go home, your task is done.]" });
             case "playerbeans":
                 return new Conversation("Narration", new string[] { "[You sit down to eat your delicious can of beans]", "[You tear off the lid with your bare hands, chugging it backwards like it's a glass of beer.]", "...!", "[You don't... feel so good...]", "..."});
+            case "playernobeans":
+                return new Conversation("Narration", new string[] { "[You enter your home, beans given away, hunger unsatiated.]", "[However... you feel like you did the right thing.]", "[Rather than being egotistical, keeping such a treasure for yourself... you shared it with a stranger.]", "[How nice of you. You did very well.]", "[Thank you. You fulfilled your role wonderfully.]", "[You can rest now. Good night... Sans Undertale.]" });
             default:
                 return new Conversation("error", new string[] { "Whoops, there's no dialogue here.", "Might want to make sure you're not inputting the wrong id."});
     }
