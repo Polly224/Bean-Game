@@ -180,7 +180,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2683018988493885065, guid: a09a329cff256d248b0736b01a4157c7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1974190702}
+    - targetCorrespondingSourceObject: {fileID: 2683018988493885065, guid: a09a329cff256d248b0736b01a4157c7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1057896436}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a09a329cff256d248b0736b01a4157c7, type: 3}
 --- !u!4 &130074600 stripped
@@ -402,7 +408,6 @@ GameObject:
   - component: {fileID: 1057896435}
   - component: {fileID: 1057896434}
   - component: {fileID: 1057896438}
-  - component: {fileID: 1057896437}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -477,26 +482,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1057896433}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.09, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 130074600}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1057896437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1057896433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59828a719f460f346b1e0685a6ee90a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerTransform: {fileID: 130074600}
 --- !u!114 &1057896438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -890,6 +882,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: MainStreet
+  spawnLocation: {x: 0, y: 0, z: 0}
 --- !u!61 &1908850834
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1035,7 +1028,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 130074600}
     m_Modifications:
     - target: {fileID: 4391011752021787110, guid: 9fa8743fba0c8584c94550334a2e9e3b, type: 3}
       propertyPath: m_Name
@@ -1047,7 +1040,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8034840010047775311, guid: 9fa8743fba0c8584c94550334a2e9e3b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.09
       objectReference: {fileID: 0}
     - target: {fileID: 8034840010047775311, guid: 9fa8743fba0c8584c94550334a2e9e3b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1063,15 +1056,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8034840010047775311, guid: 9fa8743fba0c8584c94550334a2e9e3b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8034840010047775311, guid: 9fa8743fba0c8584c94550334a2e9e3b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8034840010047775311, guid: 9fa8743fba0c8584c94550334a2e9e3b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8034840010047775311, guid: 9fa8743fba0c8584c94550334a2e9e3b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1096,6 +1089,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 9fa8743fba0c8584c94550334a2e9e3b, type: 3}
+--- !u!4 &1974190702 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8034840010047775311, guid: 9fa8743fba0c8584c94550334a2e9e3b, type: 3}
+  m_PrefabInstance: {fileID: 1974190701}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2117170790
 GameObject:
   m_ObjectHideFlags: 0
@@ -1258,11 +1256,9 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1057896436}
   - {fileID: 293590433}
   - {fileID: 12411180}
   - {fileID: 800101344}
-  - {fileID: 1974190701}
   - {fileID: 709798321}
   - {fileID: 2117170794}
   - {fileID: 1504745896}
