@@ -6,7 +6,7 @@ using UnityEngine.Rendering.Universal;
 
 public class FirstExitManager : MonoBehaviour
 {
-    public static bool rainHasStarted;
+    public static bool rainHasStarted = false;
     [SerializeField] private Light2D globalLight;
     [SerializeField] private AudioClip birdsChirping;
     [SerializeField] private AudioClip rain;
