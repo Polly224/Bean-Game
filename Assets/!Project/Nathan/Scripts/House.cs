@@ -29,7 +29,7 @@ public class House : MonoBehaviour
             spotLight.intensity -= 0.6f * Time.deltaTime;
             yield return null;
         }
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("Street");
         yield return null;
     }
 }
