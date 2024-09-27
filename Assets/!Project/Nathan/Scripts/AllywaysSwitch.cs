@@ -12,6 +12,7 @@ public class AllywaysSwitch : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            if(spawnLocation != Vector3.zero)
             Player.spawnLocation = spawnLocation;
             SceneManager.LoadScene(sceneToLoad);
         }

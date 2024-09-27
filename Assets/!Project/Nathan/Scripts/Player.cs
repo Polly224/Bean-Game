@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
+        Debug.Log(spawnLocation);
         if (Input.GetKeyDown(KeyCode.B)) PlayerPrefs.SetInt("BeansGone", 0);
         if (!TextScroll.instance.gameObject.activeSelf && canMove) 
         {

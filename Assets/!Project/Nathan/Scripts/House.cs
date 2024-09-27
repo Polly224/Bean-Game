@@ -29,6 +29,7 @@ public class House : MonoBehaviour
             spotLight.intensity -= 0.6f * Time.deltaTime;
             yield return null;
         }
+        Player.spawnLocation = new Vector3(-4.32f, 7.1f, 0);
         SceneManager.LoadScene("MainStreet");
         yield return null;
     }

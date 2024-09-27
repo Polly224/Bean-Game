@@ -31,6 +31,7 @@ public class FirstExitManager : MonoBehaviour
     private IEnumerator LeaveHouse()
     {
         Player.instance.canMove = false;
+        yield return null;
         globalLight.intensity = 0;
         GetComponent<AudioSource>().clip = birdsChirping;
         GetComponent<AudioSource>().volume = 0;
