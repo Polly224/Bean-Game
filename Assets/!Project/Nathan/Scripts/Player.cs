@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
         }
         if (nearbyNPCs.Count != 0) closestInteractable = nearbyNPCs[highestDistanceIndex];
         else closestInteractable = null;
-        if (!TextScroll.instance.gameObject.activeSelf && !canvas.activeSelf && closestInteractable != null) canvas.SetActive(true);
+        if (!TextScroll.instance.gameObject.activeSelf && !canvas.activeSelf && closestInteractable != null && canMove) canvas.SetActive(true);
         else if (TextScroll.instance.gameObject.activeSelf && canvas.activeSelf) canvas.SetActive(false);
         if(closestInteractable != null) canvas.transform.position = closestInteractable.transform.position + Vector3.up * 2;
         InteractingWithNPC();
@@ -88,7 +88,7 @@ public class Player : MonoBehaviour
     }
     private void InteractingWithNPC()
     {
-        if (Input.GetKeyDown(KeyCode.E) && nearbyNPCs.Count > 0 && !TextScroll.instance.gameObject.activeSelf)
+        if (Input.GetKeyDown(KeyCode.E) && nearbyNPCs.Count > 0 && !TextScroll.instance.gameObject.activeSelf && canMove)
         {
             if (closestInteractable.CompareTag("NPC")) closestInteractable.GetComponent<NPC>().PromptDialogue();
             else if (closestInteractable.CompareTag("Beans")) closestInteractable.GetComponent<Beans>().CollectBeans();
