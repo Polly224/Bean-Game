@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -17,11 +18,13 @@ public class Player : MonoBehaviour
     public static Player instance;
     Animator animator;
     public bool canMove = true;
+    public static Vector3 spawnLocation;
 
     private void Start()
     {
         if (instance != null) Destroy(this);
         else instance = this;
+        if(SceneManager.GetActiveScene().name == "MainStreet") transform.position = spawnLocation;
         animator = GetComponent<Animator>();
     }
     void Update()

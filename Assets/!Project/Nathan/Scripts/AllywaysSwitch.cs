@@ -6,11 +6,13 @@ using UnityEngine.SceneManagement;
 public class AllywaysSwitch : MonoBehaviour
 {
     [SerializeField] private string sceneToLoad;
+    [SerializeField] private Vector3 spawnLocation;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            Player.spawnLocation = spawnLocation;
             SceneManager.LoadScene(sceneToLoad);
         }
     }
