@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     Animator animator;
     public bool canMove = true;
     public static Vector3 spawnLocation;
+    public static bool waitingToShowReturnText = false;
 
     private void Start()
     {
@@ -26,6 +27,16 @@ public class Player : MonoBehaviour
         else instance = this;
         if(SceneManager.GetActiveScene().name == "MainStreet") transform.position = spawnLocation;
         animator = GetComponent<Animator>();
+    }
+
+    private void FixedUpdate()
+    {
+        if(waitingToShowReturnText && !TextScroll.instance.gameObject.activeSelf)
+        {
+            TextScroll.instance.gameObject.SetActive(true);
+            TextScroll.instance.DisplayText("beansgiven");
+            waitingToShowReturnText = false;
+        }
     }
     void Update()
     {
@@ -91,6 +102,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && nearbyNPCs.Count > 0 && !TextScroll.instance.gameObject.activeSelf && canMove)
         {
+            waitingToShowReturnText = (beansCollected && !beansGiven);
             if (closestInteractable.CompareTag("NPC")) closestInteractable.GetComponent<NPC>().PromptDialogue();
             else if (closestInteractable.CompareTag("Beans")) closestInteractable.GetComponent<Beans>().CollectBeans();
             rb2d.velocity = Vector2.zero;
