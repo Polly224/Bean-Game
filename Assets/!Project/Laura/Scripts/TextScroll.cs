@@ -21,6 +21,7 @@ public class TextScroll : MonoBehaviour
     {
         if (instance != null) Destroy(gameObject);
         else instance = this;
+        transform.position = new Vector3(transform.position.x, transform.position.y, -10);
         gameObject.SetActive(false);
     }
 

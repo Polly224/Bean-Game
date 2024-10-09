@@ -9,6 +9,8 @@ public class Beans : MonoBehaviour
         Player.beansCollected = true;
         Player.instance.closestInteractable = null;
         Player.instance.nearbyNPCs.Clear();
+        TextScroll.instance.gameObject.SetActive(true);
+        TextScroll.instance.DisplayText("beansobtained");
         Destroy(gameObject);
     }
 }

@@ -1,20 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using static Unity.Burst.Intrinsics.X86;
-using static Unity.VisualScripting.Antlr3.Runtime.Tree.TreeWizard;
-using static UnityEditor.PlayerSettings;
-using static UnityEditor.Progress;
-using static UnityEngine.InputManagerEntry;
-using static UnityEngine.ParticleSystem;
-using static UnityEngine.Rendering.DebugUI.Table;
-using static UnityEngine.Rendering.DebugUI;
-using static UnityEngine.UIElements.UxmlAttributeDescription;
-using UnityEngine.XR;
-using UnityEditor.SceneManagement;
 
 public class DialogueStorage : MonoBehaviour
 {
@@ -59,11 +43,11 @@ public class DialogueStorage : MonoBehaviour
             case "kris":
                 return new Conversation("Blue-skinned Kid", new string[] {"..."});
             case "krisbeans":
-                return new Conversation("Blue-skinned Kid", new string[] {"[You hand over the can of beans to the quiet blue kid.]", "...!", "[They seem happy.]"});
+                return new Conversation("Blue-skinned Kid", new string[] {"[You hand over the can of beans to the quiet blue kid.]", "...!", "[They seem happy, stashing it in their inventory for later.]"});
             case "susie":
                 return new Conversation("Purple Dragon", new string[] {"Where the FUCK are we?!"});
             case "susiebeans":
-                return new Conversation("Purple Dragon", new string[] {"[You anxiously hand over the can of beans to the Purple Dragon.]", "Huh? You want to give me a can of beans?", "...", "HOW THE HELL IS THAT GONNA HELP US FIGURE OUT WHERE WE ARE?!"});
+                return new Conversation("Purple Dragon", new string[] {"[You anxiously hand over the can of beans to the Purple Dragon.]", "Huh? You want to give me a can of beans?", "...", "HOW THE HELL IS THAT GONNA HELP US FIGURE OUT WHERE WE ARE?!", "[Despite seeming angry, she quickly devours the beans after finishing her sentence...]", "[...Including the can.]"});
             case "goku":
                 return new Conversation("Strongest Fighter", new string[] { "Hey, it's me! The Strongest Fighter!", "Hey, you look pretty strong! I'd love to fight you sometime!", "Seems you're already busy on some kinda adventure, though. Let me know if you're up for a match!"});
             case "gokubeans":
@@ -73,35 +57,37 @@ public class DialogueStorage : MonoBehaviour
             case "bugbeans":
                 return new Conversation("Bug", new string[] { "...", "[There's still a bug here.]", "[It takes the beans you hand to it, eagerly eating them.]", "...!", "[It happily waves at you. You wave back.]" });
             case "hollowknight":
-                return new Conversation("Bug", new string[] { "...", "[There's a bug here.]", "[You can barely see it with your pixelated eyes, but it seems to be holding a nail of some sorts.]", "["});
+                return new Conversation("Bug", new string[] { "...", "[There's a bug here.]", "[You can barely see it with your pixelated eyes, but it seems to be holding a nail of some sorts.]"});
             case "hollowknightbeans":
                 return new Conversation("Bug", new string[] { "...", "[There's still a bug here.]", "[It impales one of the beans you hand to it with its nail, eating off it like a skewer.]", "[...Is it eating with its eyes?]", "[Oh, well. It seems to be enjoying it.]" });
             case "caseohsign":
-                return new Conversation("Sign", new string[] { "[It's an old, worn down sign. It seems like it's been here for a while.]", "[There's some poorly written text on it.", "\"Sorry to all C*seoh fans, we ran out of budget to expand the room further. We weren't able to fit him in.\"", "...", "[This room is bigger than your entire house.]" });
+                return new Conversation("Sign", new string[] { "[It's an old, worn down sign. It seems like it's been here for a while.]", "[There's some poorly written text on it.]", "\"Sorry to all C*seoh fans, we ran out of budget to expand the room further. We weren't able to fit him in.\"", "...", "[This room is so big that you can't see the walls...]", "[How the hell did they even fit all this in a log cabin?]" });
             case "caseohsignbeans":
                 return new Conversation("Sign", new string[] { "[You lay down the can of beans next to the sign.]", "[The sign turns to face it, absorbing the can into its face before the can instantly disappears.]", "...", "[The text on the sign changed.]", "\"Please stop feeding him. You're only making things worse.\"" });
             case "cookie":
                 return new Conversation("Pile of Cookies", new string[] {"[There's " + cookieClickAmount.ToString() + " cookies laying on the ground here.]", "[You reach out and tap your finger on one of the cookies.]", "[...Surprisingly, another cookie pops out and gets added to the pile!]"});
             case "cookiebeans":
                 return new Conversation("Pile of Cookies", new string[] {"[There's " + cookieClickAmount.ToString() + " cookies laying on the ground here.]", "[You reach out and pour the beans onto the pile.]", "[...Now it's " + cookieClickAmount.ToString() + " cookies and about 1735 beans.]", "[You've gained quite the collection, it seems.]"});
+            case "cookieandbeans":
+                return new Conversation("Pile of Cookies & Beans", new string[] { "[There's " + cookieClickAmount.ToString() + " cookies laying on the ground here, as well as 1735 beans.]", "[You reach out and tap your finger on one of the cookies, as well as one of the beans.]", "[Another cookie pops out and gets added to the pile, but no extra bean for you!]", "[The game's not called \"Bean Clicker\", now, is it?]"});
             case "ratcoat":
                 return new Conversation("???", new string[] { "[It's a bunch of rats in a trenchcoat, pretending to be a person.]", "...No we're not." });
             case "ratcoatalt":
-                return new Conversation("?????", new string[] { "[You're not sure what this is.]", "[You're pretty sure it isn't a bunch of rats in a trenchcoat, though.]" });
+                return new Conversation("???????????", new string[] { "[You're not sure what this is.]", "[You're pretty sure it isn't a bunch of rats in a trenchcoat, though.]" });
             case "ratcoatbeans":
                 return new Conversation("???", new string[] {"[You place the can of beans next to the coated figure, which quickly picks it up.]", "[A few moments later, out pops an empty can of beans.]", "[The rats in the coat seem happy.]", "...No, we don't."});
             case "ratcoataltbeans":
-                return new Conversation("?????", new string[] { "[You place the can of beans next to the coated figure, which quickly picks it up.]", "[A few moments later, out pops an empty can of beans.]", "[Whatever this coat is filled with, it seems happy.]", "...I guess we are." });
+                return new Conversation("???????????", new string[] { "[You place the can of beans next to the coated figure, which quickly picks it up.]", "[A few moments later, out pops an empty can of beans.]", "[Whatever this coat is filled with, it seems happy.]", "...I guess we are." });
             case "cat":
                 return new Conversation("Dog", new string[] {"[It's a dog.]"});
             case "catbeans":
                 return new Conversation("Dog", new string[] {"[Dogs can't eat uncooked beans.]", "...*clink!*", "[Well, wouldn't you know it. The Dog knocked over the opened can. What a waste.]"});
             case "longspeech":
-                return new Conversation("Wise Old Hippo", new string[] { "Oh... It's you.", "I'm… honestly surprised you even managed to find me.", "Not many people visit this alley anymore, you know.", "I must say, you’re the first visitor I've had in many years. How fascinating.", "There is… one thing, that I wish to tell you about.", "You see, there's been something plaguing me for many years now. Something I haven’t been able to talk about to anyone.", "Now that YOU’RE here, though… I suppose I should… ‘spill the beans’, so to speak.", "Not that you really have a say in this. I explicitly told them not to put ‘yes’ or ‘no’ options in my conversation.", "…Anyway. Allow me to tell you a story.", "You see, I used to have this dear friend of mine… his name was Ellivro.", "He always wore a very fancy sombrero, it was his signature hat.", "One day, he leaned over while we were feeding the ducks, you see.", "I said to him, y’know, I leaned over to him, and I said…", "’Ellivro. You gotta stop feeding the ducks, man. I-It’s… it’s not good for 'em. The bread, I mean. They can’t really, like, digest it.’", "…He just stared at me for a while, seemingly unresponsive.", "’…Please wake up.’, he replied.", "…", "Why… why did he say that?" });
+                return new Conversation("Wise Old Hippo", new string[] { "Oh... It's you.", "I'm... honestly surprised you even managed to find me.", "Not many people visit this alley anymore, you know.", "I must say, you’re the first visitor I've had in many years. How fascinating.", "There is... one thing, that I wish to tell you about.", "You see, there's been something plaguing me for many years now. Something I haven’t been able to talk about to anyone.", "Now that YOU’RE here, though... I suppose I should... ‘spill the beans’, so to speak.", "Not that you really have a say in this. I explicitly told them not to put ‘yes’ or ‘no’ options in my conversation.", "...Anyway. Allow me to tell you a story.", "You see, I used to have this dear friend of mine... his name was Ellivro.", "He always wore a very fancy sombrero, it was his signature hat.", "One day, he leaned over while we were feeding the ducks, you see.", "I said to him, y’know, I leaned over to him, and I said...", "\"Ellivro. You gotta stop feeding the ducks, man. I-It’s... it’s not good for 'em. The bread, I mean. They can’t really, like, digest it.\"", "...He just stared at me for a while, seemingly unresponsive.", "\"...Please wake up... we miss you so much.\", he suddenly replied.", "...", "Why... why did he say that...?" });
             case "longspeechbeans":
                 return new Conversation("Wise Old Hippo", new string[] {"Thank you, my friend.", "...", "[You're both glad you didn't have to sit through another speech, but also a bit disappointed.]", "[At least he seems to be enjoying his meal.]"});
             case "cigarettepile":
-                return new Conversation("Cigarette Pile", new string[] { "[Five... hundred... \n ...Wait, no, this is 499 cigarettes, not 500. You might want to order some more.]"});
+                return new Conversation("Cigarette Pile", new string[] { "[Five... hundred... \n ...Wait, no, this is 499 cigarettes, not 500.]", "[Might want to order some more.]"});
             case "cigarettepilebeans":
                 return new Conversation("Cigarette Pile", new string[] { "[You pour the beans onto the pile.]", "[Congratulations, you've wasted some perfectly good beans, and cured some random guy's nicotine addiction.]"});
             case "garcello":
@@ -144,6 +130,10 @@ public class DialogueStorage : MonoBehaviour
                 return new Conversation("Balloon", new string[] { "[It's a floating red balloon. Its string seems to be tied around a sewer grate.]", "[There's a little note with writing and a drawing of a clown attached to the balloon.]", "\"We all float down here.\"", "...", "[This feels like a reference you don't get.]"});
             case "pennywisebeans":
                 return new Conversation("Balloon", new string[] { "[You throw the can of beans down the sewer the balloon is attached to.]", "...", "[A moment of silence passes as the clanging of the can echoes down the sewers.]", "[Right as you're about to regret your decision, you hear a creepy laughter coming from inside.]", "[...You suppose someone appreciated your gift.]" });
+            case "endofworld":
+                return new Conversation("Ending Sign", new string[] { "[It's a talking sign.]", "Hi there, bean guy!", "I think you're going the wrong way there, bud. Store's the other way.", "And, to be fair, all you'll find out this way is the void. And the void has no beans, so why'd you even wanna go there." });
+            case "endofworldbeans":
+                return new Conversation("Ending Sign", new string[] { "[The talking sign stares at the can of bean you're offering it, puzzled.]", "You're, uh... you want ME to have this? L-like, really? Unironically? For real?", "[You nod. You do want to give the beans to him.]", "...", "W-wow, ok, I'm just... surprised. I only got hired last-minute to stop you from continuing, I don't deserve- I-I mean, I...", "...Jeez, thanks, man. You've really made my day, here.", "I'll try to extend the road by about 2 inches for Bean Game 2, just for you!", "[You've never seen a sign actually be happy before. You can't help but smile along.]"});
             case "beansobtained":
                 return new Conversation("Narration", new string[] { "[You've obtained the last can of beans!]", "[You can either go home and eat it yourself, or give it to whoever you want.]", "[Mind you, this means that the next thing you talk to will be given the beans. So choose wisely.]", "[In your hands is the last can of beans.]"});
             case "beansgiven":

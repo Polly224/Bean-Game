@@ -18,6 +18,7 @@ public class NPC : MonoBehaviour
             Player.beansCollected = false;
             Player.beansGiven = true;
             PlayerPrefs.SetInt("BeansGone", 1);
+            enabled = false;
         }
         else
         {

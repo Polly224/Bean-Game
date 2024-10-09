@@ -30,12 +30,19 @@ public class FirstExitManager : MonoBehaviour
 
     private IEnumerator LeaveHouse()
     {
+        yield return new WaitForFixedUpdate();
         Player.instance.canMove = false;
         yield return null;
+        for(int i = 0; i < 50; i++)
+        {
+            yield return new WaitForFixedUpdate();
+            Player.instance.canMove = false;
+        }
         globalLight.intensity = 0;
         GetComponent<AudioSource>().clip = birdsChirping;
         GetComponent<AudioSource>().volume = 0;
         GetComponent<AudioSource>().Play();
+        yield return null;
         while(globalLight.intensity < 1)
         {
             globalLight.intensity += 0.3f * Time.deltaTime;

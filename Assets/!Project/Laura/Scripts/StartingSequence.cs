@@ -25,11 +25,6 @@ public class StartingSequence : MonoBehaviour
         GameObject.Find("Player").GetComponent<Player>().canMove = false;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.G)) PlayerPrefs.SetInt("PlayerDied", 0);
-    }
-
     private IEnumerator StartSequence()
     {
         yield return new WaitForSeconds(3);

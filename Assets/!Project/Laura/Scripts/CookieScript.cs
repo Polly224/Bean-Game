@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Networking.PlayerConnection;
 using UnityEngine;
 
 public class CookieScript : NPC
@@ -15,6 +14,7 @@ public class CookieScript : NPC
             Player.beansCollected = false;
             Player.beansGiven = true;
             PlayerPrefs.SetInt("BeansGone", 1);
+            textId = "cookieandbeans";
         }
         else
         {

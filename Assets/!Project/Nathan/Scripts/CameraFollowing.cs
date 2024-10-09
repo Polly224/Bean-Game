@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class CameraFollowing : MonoBehaviour
 {
-    [SerializeField] Transform PlayerTransform;
-    void Update()
+    private void FixedUpdate()
     {
-        transform.position = PlayerTransform.transform.position + new Vector3(0, 1, -5);
+        if (transform.position.z != 20) transform.position = new Vector3(transform.position.x, transform.position.y, -20);
     }
 }
 

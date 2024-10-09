@@ -7,11 +7,11 @@ public class StartButton : MonoBehaviour
 {
     public void PressedStart()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("House");
     }
 
     public void PressedCredits()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("Credits");
     }
 }

@@ -2,14 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RatScript : NPC
+public class DisappearAfterBeanNPC : NPC
 {
-    public static bool talkedToBefore = false;
-   public override void  PromptDialogue()
+    public override void PromptDialogue()
     {
-        if (talkedToBefore) textId = "ratcoatalt";
         TextScroll.instance.gameObject.SetActive(true);
-
 
         if (Player.beansCollected)
         {
@@ -17,11 +14,12 @@ public class RatScript : NPC
             Player.beansCollected = false;
             Player.beansGiven = true;
             PlayerPrefs.SetInt("BeansGone", 1);
+            GetComponent<BoxCollider2D>().enabled = false;
+            GetComponent<SpriteRenderer>().enabled = false;
         }
         else
         {
             TextScroll.instance.DisplayText(textId);
         }
-        talkedToBefore = true;
     }
 }

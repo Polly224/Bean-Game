@@ -29,8 +29,6 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(spawnLocation);
-        if (Input.GetKeyDown(KeyCode.B)) PlayerPrefs.SetInt("BeansGone", 0);
         if (!TextScroll.instance.gameObject.activeSelf && canMove) 
         {
             moveInput.x = Input.GetAxisRaw("Horizontal");
@@ -75,7 +73,6 @@ public class Player : MonoBehaviour
         {
             nearbyNPCs.Add(collision.gameObject);
         }
-        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
